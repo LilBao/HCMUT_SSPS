@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PrintingConfigurationRepository extends JpaRepository<PrintingConfiguration, Long> {
-    Optional<PrintingConfiguration> findTopByCreatedAtDesc();
+    Optional<PrintingConfiguration> findTopByOrderByCreatedAtDesc();
 }

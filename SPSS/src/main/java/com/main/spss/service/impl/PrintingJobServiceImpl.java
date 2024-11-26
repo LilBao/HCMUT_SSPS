@@ -169,7 +169,7 @@ public class PrintingJobServiceImpl implements PrintingJobService{
         } else if (request.getFiles().isEmpty()) {
             return "File empty";
         }
-        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByCreatedAtDesc().get();
+        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByOrderByCreatedAtDesc().get();
         if (printingConfiguration == null) return "";
 
         boolean invalidFileType = request.getFiles().stream()

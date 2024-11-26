@@ -28,7 +28,7 @@ public class PrintingConfigurationServiceImpl implements PrintingConfigurationSe
 
     @Override
     public ApiResponse findLatestConfig() {
-        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByCreatedAtDesc().get();
+        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByOrderByCreatedAtDesc().get();
         if (printingConfiguration == null) {
             return new ApiResponse().builder()
                     .success(true)
@@ -58,9 +58,9 @@ public class PrintingConfigurationServiceImpl implements PrintingConfigurationSe
     }
 
     @Scheduled(cron = "0 0 0 1 1,5,9 *", zone = "Asia/Ho_Chi_Minh")
-    private ApiResponse providePages() {
-        List<User> listStudent = userRepository.findAllByIsEnabledAndRolesContainingIgnoreCase(true, "ROLE_STUDENT");
-        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByCreatedAtDesc().get();
+    public ApiResponse providePages() {
+        List<User> listStudent = userRepository.findAllStudent();
+        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByOrderByCreatedAtDesc().get();
         if (listStudent.isEmpty()) {
             new ApiResponse().builder()
                     .success(true)
