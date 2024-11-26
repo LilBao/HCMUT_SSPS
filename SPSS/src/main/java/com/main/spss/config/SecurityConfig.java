@@ -1,6 +1,5 @@
 package com.main.spss.config;
 
-import com.main.spss.enums.ERole;
 import com.main.spss.security.JwtAuthenticationFilter;
 import com.main.spss.security.UserDetailsServiceImpl;
 
