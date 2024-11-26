@@ -1,9 +1,11 @@
 package com.main.spss.service.impl;
 
 import com.main.spss.dto.PrinterDTO;
-import com.main.spss.dto.PrintingPropertiesDTO;
 import com.main.spss.entity.PrintJob;
+import com.main.spss.entity.PrintingConfiguration;
+import com.main.spss.entity.User;
 import com.main.spss.repository.PrinterRepository;
+import com.main.spss.repository.PrintingConfigurationRepository;
 import com.main.spss.repository.PrintingJobRepository;
 import com.main.spss.repository.UserRepository;
 import com.main.spss.security.UserPrincipal;
@@ -13,6 +15,8 @@ import com.main.spss.utils.EmailService;
 import com.main.spss.enums.EPrintingStatus;
 import com.main.spss.payload.request.PrintRequest;
 import com.main.spss.payload.response.ApiResponse;
+import com.main.spss.utils.FileService;
+import lombok.extern.slf4j.Slf4j;
 import org.cups4j.CupsClient;
 import org.cups4j.CupsPrinter;
 import org.cups4j.PrintRequestResult;
@@ -31,6 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
+@Slf4j
 public class PrintingJobServiceImpl implements PrintingJobService{
     @Autowired
     EmailService emailService;
@@ -44,15 +49,22 @@ public class PrintingJobServiceImpl implements PrintingJobService{
     @Autowired
     PrinterRepository printerRepository;
 
+    @Autowired
+    FileService fileService;
+
+    @Autowired
+    PrintingConfigurationRepository printingConfigurationRepository;
+
     private final ConcurrentHashMap<Long, BlockingQueue<PrintRequest>> printerQueues = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<Long, Boolean> printerStatus = new ConcurrentHashMap<>();
 
     @Override
     public ApiResponse addRequest(UserPrincipal userPrincipal, PrintRequest request) {
         ApiResponse apiResponse = new ApiResponse();
-        if (!validateRequest(request)) {
+        String errorRequest = validateRequest(userPrincipal, request);
+        if (errorRequest.length() != 0) {
             return apiResponse.builder()
-                    .message("Request invalid!")
+                    .message(errorRequest)
                     .success(false)
                     .errorCode(ApiResponseCode.REQUEST_PRINT_INVALID)
                     .build();     
@@ -150,7 +162,22 @@ public class PrintingJobServiceImpl implements PrintingJobService{
         printingJobRepository.save(printJob);
     }
 
-    private boolean validateRequest(PrintRequest request){
-        return true;
+    private String validateRequest(UserPrincipal userPrincipal, PrintRequest request){
+        User user = userPrincipal.toUser();
+        if (user.getPageBalance() <= 0) {
+            return "Page balance isn't enough";
+        } else if (request.getFiles().isEmpty()) {
+            return "File empty";
+        }
+        PrintingConfiguration printingConfiguration = printingConfigurationRepository.findTopByCreatedAtDesc().get();
+        if (printingConfiguration == null) return "";
+
+        boolean invalidFileType = request.getFiles().stream()
+                .anyMatch(file -> !printingConfiguration.getAllowedFileTypes().contains(fileService.getFileExtension(file)));
+
+        if (invalidFileType) {
+            return "Type isn't allow";
+        }
+        return "";
     }
 }
