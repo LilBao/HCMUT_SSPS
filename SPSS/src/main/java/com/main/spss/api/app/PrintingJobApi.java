@@ -22,4 +22,9 @@ public class PrintingJobApi {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(printingJobService.addRequest(userPrincipal, printRequest));
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test(){
+        return ResponseEntity.ok("test");
+    }
 }
