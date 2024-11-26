@@ -39,7 +39,7 @@ public class User extends BaseEntity{
     private String token;
 
     @Column(name = "page_balance")
-    private String pageBalance;
+    private Integer pageBalance;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<PrintJob> printJobs;
