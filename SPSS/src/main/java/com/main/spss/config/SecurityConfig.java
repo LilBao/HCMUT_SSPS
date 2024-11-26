@@ -52,8 +52,8 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                        //.requestMatchers("/api/system/**").hasRole(ERole.SPSO.name())
-                        //.requestMatchers("/api/spss/**").hasAnyRole(ERole.SPSO.name(), ERole.STUDENT.name())
+                        .requestMatchers("/api/system/**").hasRole("SPSO")
+                        .requestMatchers("/api/spss/**").hasAnyRole("SPSO", "STUDENT")
                         .requestMatchers("/**").permitAll()
                         .anyRequest()
                         .authenticated())
