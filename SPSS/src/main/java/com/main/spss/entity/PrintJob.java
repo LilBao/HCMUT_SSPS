@@ -53,4 +53,7 @@ public class PrintJob extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "printer_id")
     private Printer printer;
+
+    @Column(name = "status")
+    private String status;
 }
