@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Máy in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset và cài đặt chung */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #005DB4;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 30px; /* Thêm khoảng cách giữa các menu */
+        }
+
+        .navbar .menu-item {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar .options img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            border-radius: 3px;
+            background: white;
+        }
+
+        .hamburger:hover div {
+            background: #dcdcdc;
+        }
+
+        .container {
+            flex: 1;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Tách nút ra hai bên */
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            display: flex;
+            width: 200px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            border-radius: 8px;
+            border: 2px solid #E80505;
+            background: #FFF;
+
+            color: #C90000;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #ffe5e5;
+        }
+
+        .delete-button .icon {
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+        }
+
+        .add-button {
+            display: flex;
+            width: 200px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            border-radius: 8px;
+            background: #005DB4;
+
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-button:hover {
+            background-color: #004a92;
+        }
+
+        .add-button .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 10px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .file-table th:first-child, 
+        .file-table td:first-child {
+            text-align: center;
+        }
+
+        .toggle-switch {
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .toggle-switch:checked {
+            background-color: #4CAF50;
+        }
+
+        .toggle-switch:checked::before {
+            left: 20px;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        .footer {
+            background-color: #6D6D6D;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .footer .contact-info {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .footer .note {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="navbar">
+        <div class="logo">SPSO</div>
+        <div class="menu">
+            <a href="QuanLyFile.html" class="menu-item">QUẢN LÝ FILE</a>
+            <a href="QuanLySinhVien.html" class="menu-item">QUẢN LÝ SINH VIÊN</a>
+            <a href="#" class="menu-item">LỊCH SỬ IN</a>
+        </div>
+        <div class="options">
+            <img src="https://via.placeholder.com/30" alt="Bảng caro">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <div class="header">
+            <!-- Nút Xóa máy in bên trái -->
+            <button class="delete-button">
+                <span>Xóa máy in</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M27.2773 24.1236L17.2483 14.0946L26.971 4.37193L23.6281 1.02895L13.9053 10.7517L3.8764 0.722717L0.635498 3.96362L10.6644 13.9926L0.941725 23.7153L4.28471 27.0583L14.0074 17.3356L24.0364 27.3645L27.2773 24.1236Z" fill="#C20000"/>
+                </svg>
+            </button>
+
+            <!-- Nút Thêm máy in bên phải -->
+            <button class="add-button">
+                <span>Thêm máy in</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33.094" height="32.083" viewBox="0 0 34 33" class="icon">
+                    <path d="M33.9522 14.2084H19.7692V0.458374H15.0415V14.2084H0.858398V18.7917H15.0415V32.5417H19.7692V18.7917H33.9522V14.2084Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
+        <table class="file-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID Máy in</th>
+                    <th>Trạng thái</th>
+                    <th>Mẫu máy</th>
+                    <th>Điều khiển</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT001</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT002</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT003</a></td>
+                    <td>Ngừng hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT001</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT002</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT003</a></td>
+                    <td>Ngừng hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT001</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT002</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT003</a></td>
+                    <td>Ngừng hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT001</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT002</a></td>
+                    <td>Đang hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a href="#">PRT003</a></td>
+                    <td>Ngừng hoạt động</td>
+                    <td>Toshiba 5505AC</td>
+                    <td><input type="checkbox" class="toggle-switch"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="title">TỔ KỸ THUẬT CÔNG TY SPSO</p>
+        <p class="contact-info">Email: sang.truongtan2004@hcmut.edu.vn</p>
+        <p class="contact-info">Sđt: 0927439682</p>
+        <p class="contact-info">Địa chỉ: Đại học Bách khoa Thành phố Hồ Chí Minh</p>
+        <p class="note">Quý Thầy/Cô chưa có tài khoản (hoặc quên mật khẩu) nhà trường vui lòng liên hệ số điện thoại hoặc gmail để được hỗ trợ.</p>
+    </div>
+</body>
+</html>

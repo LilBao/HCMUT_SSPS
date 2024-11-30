@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý File</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset và cài đặt chung */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #005DB4;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 30px; /* Thêm khoảng cách giữa các menu */
+        }
+
+        .navbar .menu-item {
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        .navbar .options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar .options img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            border-radius: 3px;
+            background: white;
+        }
+
+        .hamburger:hover div {
+            background: #dcdcdc;
+        }
+
+        .container {
+            flex: 1;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Tách nút ra hai bên */
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            display: flex;
+            width: 200px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            border-radius: 8px;
+            border: 2px solid #E80505;
+            background: #FFF;
+
+            color: #C90000;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #ffe5e5;
+        }
+
+        .delete-button .icon {
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+        }
+
+        .add-button {
+            display: flex;
+            width: 200px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            border-radius: 8px;
+            background: #005DB4;
+
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-button:hover {
+            background-color: #004a92;
+        }
+
+        .add-button .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Container của bảng */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+
+        /* Bảng */
+        .file-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .file-table thead {
+            background-color: #f2f2f2;
+            font-size: 14px;
+        }
+
+        .file-table th {
+            padding: 12px 16px;
+            color: #333;
+            font-weight: bold;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .file-table td {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #555;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Căn giữa checkbox */
+        .file-table td:first-child {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Link trong cột Tên file */
+        .file-table a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .file-table a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-switch {
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .toggle-switch:checked {
+            background-color: #4CAF50;
+        }
+
+        .toggle-switch:checked::before {
+            left: 20px;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        .footer {
+            background-color: #6D6D6D;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .footer .contact-info {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .footer .note {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .header .text-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .text-main {
+            color: #000; /* Màu đen */
+            font-size: 30px;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .text-highlight {
+            color: #FF1717; /* Màu đỏ */
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* Icon container */
+        .icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Button shared styling (Cập nhật kích thước) */
+        .three-button {
+            width: 70px; /* Kích thước mới */
+            height: 70px; /* Kích thước mới */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 10px; /* Bo tròn để giống hình 2 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+            background-color: #ffffff; /* Nền trắng để tương thích */
+        }
+
+        /* Hover effect (shared for both buttons) */
+        .three-button:hover{
+            transform: scale(1.1);
+            background-color: #f0f0f0; /* Hiệu ứng khi hover */
+        }
+
+        /* SVG styling (giữ nguyên nhưng sẽ tự co theo nút) */
+        .three-button svg{
+            display: block;
+            width: 50px; /* Kích thước SVG bên trong */
+            height: 50px;
+        }
+
+        /* Tiêu đề File đã tải lên */
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="navbar">
+        <div class="logo">SPSO</div>
+        <div class="menu">
+            <a href="QuanLyMayIn.html" class="menu-item">QUẢN LÝ MÁY IN</a>
+            <a href="QuanLySinhVien.html" class="menu-item">QUẢN LÝ SINH VIÊN</a>
+            <a href="#" class="menu-item">LỊCH SỬ IN</a>
+        </div>
+        <div class="options">
+            <img src="https://via.placeholder.com/30" alt="Bảng caro">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="text-container">
+                <span class="text-main">Số trang in khả dụng:</span>
+                <span class="text-highlight">30</span>
+            </div>
+            <div class="icons">
+                <!-- Cart Button -->
+                <button class="three-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 106 106" fill="none">
+                        <rect x="2.5" y="2.5" width="101" height="101" rx="7.5" fill="#B7CADB"/>
+                        <rect x="2.5" y="2.5" width="101" height="101" rx="7.5" stroke="#4B89C4" stroke-width="5"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M43 83C45.2092 83 47 81.2092 47 79C47 76.7908 45.2092 75 43 75C40.7909 75 39 76.7908 39 79C39 81.2092 40.7909 83 43 83ZM43 87C47.4184 87 51 83.4184 51 79C51 74.5816 47.4184 71 43 71C38.5817 71 35 74.5816 35 79C35 83.4184 38.5817 87 43 87Z" fill="#005DB4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M71 83C73.2092 83 75 81.2092 75 79C75 76.7908 73.2092 75 71 75C68.7908 75 67 76.7908 67 79C67 81.2092 68.7908 83 71 83ZM71 87C75.4184 87 79 83.4184 79 79C79 74.5816 75.4184 71 71 71C66.5816 71 63 74.5816 63 79C63 83.4184 66.5816 87 71 87Z" fill="#005DB4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 21C17 19.8954 17.8954 19 19 19H27C27.8707 19 28.6413 19.5633 28.9056 20.3929L42.4797 63H73C74.1044 63 75 63.8956 75 65C75 66.1044 74.1044 67 73 67H41.0178C40.1472 67 39.3765 66.4368 39.1122 65.6072L25.5381 23H19C17.8954 23 17 22.1046 17 21Z" fill="#005DB4"/>
+                        <path d="M39 57L29 29H82.3484C83.6772 29 84.6368 30.2718 84.2716 31.5494L77.4144 55.5496C77.1692 56.408 76.3844 57 75.4912 57H39Z" fill="#005DB4"/>
+                        <path d="M57.8999 33.9C57.8999 33.1268 57.2731 32.5 56.4999 32.5C55.7267 32.5 55.0999 33.1268 55.0999 33.9V42.1H46.9C46.1268 42.1 45.5 42.7268 45.5 43.5C45.5 44.2732 46.1268 44.9 46.9 44.9H55.0999V53.1C55.0999 53.8732 55.7267 54.5 56.4999 54.5C57.2731 54.5 57.8999 53.8732 57.8999 53.1V44.9H66.1C66.8732 44.9 67.5 44.2732 67.5 43.5C67.5 42.7268 66.8732 42.1 66.1 42.1H57.8999V33.9Z" fill="#B7CADB" stroke="#B7CADB"/>
+                    </svg>
+                </button>
+
+                <!-- Upload Button -->
+                <button class="three-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 106 106" fill="none">
+                        <rect x="2.5" y="2.5" width="101" height="101" rx="7.5" fill="#B7DBBB"/>
+                        <rect x="2.5" y="2.5" width="101" height="101" rx="7.5" stroke="#00B56D" stroke-width="5"/>
+                        <path d="M38.9583 53.125H46.0416V31.875H56.6666L42.4999 14.1666L28.3333 31.875H38.9583V53.125Z" fill="#00B56D"/>
+                        <path d="M70.8332 63.75H14.1666V38.9584H7.08325V63.75C7.08325 67.6565 10.2601 70.8334 14.1666 70.8334H70.8332C74.7397 70.8334 77.9166 67.6565 77.9166 63.75V38.9584H70.8332V63.75Z" fill="#00B56D"/>
+                    </svg>
+                </button>
+
+                <!-- Delete Button -->
+                <button class="three-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="106" height="106" viewBox="0 0 106 106" fill="none">
+                        <rect x="5" y="5" width="96" height="96" rx="5" fill="#F7B8B8"/>
+                        <rect x="2.5" y="2.5" width="101" height="101" rx="7.5" stroke="#BC0000" stroke-opacity="0.6" stroke-width="5"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M26 32.6364C26 30.9795 27.3432 29.6364 29 29.6364H77C78.6568 29.6364 80 30.9795 80 32.6364C80 34.2932 78.6568 35.6364 77 35.6364H29C27.3432 35.6364 26 34.2932 26 32.6364Z" fill="#BC0000"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M50.3331 24C47.5719 24 45.3331 26.2386 45.3331 29V32.6364H39.3333V29C39.3333 22.9249 44.2581 18 50.3331 18H55.6667C61.7419 18 66.6667 22.9249 66.6667 29V32.6364H60.6667V29C60.6667 26.2386 58.4279 24 55.6667 24H50.3331Z" fill="#BC0000"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M29 32.6364L37 85H69L77 32.6364H29ZM55 47.182C55 46.0772 54.1044 45.182 53 45.182C51.8956 45.182 51 46.0772 51 47.182V70.4544C51 71.5592 51.8956 72.4544 53 72.4544C54.1044 72.4544 55 71.5592 55 70.4544V47.182ZM42.1046 45.186C43.1912 45.0172 44.1744 45.774 44.3007 46.8764L46.9672 70.1492C47.0936 71.2516 46.3152 72.282 45.2288 72.4504C44.1421 72.6192 43.1588 71.862 43.0325 70.76L40.3659 47.4872C40.2396 46.3848 41.018 45.3544 42.1046 45.186ZM65.634 47.4872C65.7604 46.3848 64.982 45.3544 63.8952 45.186C62.8088 45.0172 61.8256 45.774 61.6992 46.8764L59.0324 70.1492C58.9064 71.2516 59.6848 72.282 60.7712 72.4504C61.858 72.6192 62.8412 71.862 62.9672 70.76L65.634 47.4872Z" fill="#BC0000"/>
+                      </svg>
+                </button>
+            </div>
+            
+        </div>
+
+        <!-- Title -->
+        <div class="section-title">File đã tải lên</div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table class="file-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Tên file</th>
+                        <th>Ngày tải lên</th>
+                        <th>Kích thước</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#">ABC.pdf</a></td>
+                        <td>DD/MM/YYYY</td>
+                        <td>xx KB/MB</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="title">TỔ KỸ THUẬT CÔNG TY SPSO</p>
+        <p class="contact-info">Email: sang.truongtan2004@hcmut.edu.vn</p>
+        <p class="contact-info">Sđt: 0927439682</p>
+        <p class="contact-info">Địa chỉ: Đại học Bách khoa Thành phố Hồ Chí Minh</p>
+        <p class="note">Quý Thầy/Cô chưa có tài khoản (hoặc quên mật khẩu) nhà trường vui lòng liên hệ số điện thoại hoặc gmail để được hỗ trợ.</p>
+    </div>
+</body>
+</html>
