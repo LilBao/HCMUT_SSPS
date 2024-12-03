@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SPSO Navbar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .navbar {
+            background-color: #005DB4;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .navbar .logo {
+            font-size: 60px;
+            font-weight: bold;
+            margin-left: 70px;
+        }
+        .navbar .logo a {
+            text-decoration: none;  
+            color: white;
+        }
+        
+        .navbar .login {
+            color: white;
+            font-size: 30px;
+            margin-right: 60px; /* Add margin for spacing */
+            font-weight:bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .navbar a:before {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 4.5px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover:before {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><a href="#">SPSO</a></div>
+        <a href="#" class="login">ĐĂNG NHẬP</a>
+    </div>
+</body>
+</html>

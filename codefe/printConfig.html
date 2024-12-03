@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print configuration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" />
+    <link rel="stylesheet" href="printConfigStyle.css" />
+  </head>
+  <body>
+    <button id="open-popup-btn" class="styled-button">Print configuration</button>
+    <div class="popup-container" id="popup-container">
+      <div class="popup">
+        <div class="main-container">
+          <form action="">
+            <span class="cai-dat-in">Quản lý cài đặt in</span>
+            <hr class="divider"/>
+            <span class="so-trang">Định dạng file cho phép</span>
+            <div class="radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="filetype">
+                <span class="radio-btn"></span>
+                DOCX
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="filetype">
+                <span class="radio-btn"></span>
+                PDF
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="filetype">
+                <span class="radio-btn"></span>
+                JPG
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="filetype">
+                <span class="radio-btn"></span>
+                XLSX
+              </label>
+            </div>
+            <div class="group-2">
+              <span class="text-9"><label for="numofpage">Số lượng giấy cung cấp định kỳ</label></span>
+              <input type="number" class="rectangle-numofpage" name="numofpage" id="numofpage" placeholder="Nhập số lượng">
+            </div>
+            <div class="group-2">
+              <span class="text-9"><label for="time">Thời gian cung cấp giấy</label></span>
+              <select class="rectangle-time" name="time" id="time">
+                <option value="beginning" selected>Đầu mỗi kỳ</option>
+                <option value="end">Cuối mỗi kỳ</option>
+                <option value="request">Theo yêu cầu</option>
+              </select>
+            </div>
+            <!-- 
+            <div>
+              <select class="rectangle" name="danh-sach-may-in" id="printerlist">
+                <option value="printer" selected>Danh sách máy in</option>
+                <option value="printer1">Máy in 1</option>
+                <option value="printer2">Máy in 2</option>
+                <option value="printer3">Máy in 3</option>
+              </select>
+            <span class="so-trang">Số trang</span>
+            <div class="radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="pagenum">
+                <span class="radio-btn"></span>
+                Tất cả
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="pagenum">
+                <span class="radio-btn"></span>
+                Trang lẻ
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="pagenum">
+                <span class="radio-btn"></span>
+                Trang chẵn
+              </label>
+            </div>
+            <div class="radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="pagenum" value="custom" id="custom">
+                Tùy chọn
+                <input type="text" id="customInput" name="customInput" placeholder="Nhập tùy chọn" disabled>
+              </label>
+            </div>
+            <div class="group-2">
+              <span class="text-9"><label for="size">Kích thước</label></span>
+              <select class="rectangle-size" name="kich-thuoc" id="size">
+                <option value="A4" selected>A4</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="A3">A3</option>
+              </select>
+            </div>
+            
+            <div>
+              <div class="radio-group">
+                <label class="custom-radio">
+                  <input type="radio" name="printmode">
+                  <span class="radio-btn"></span>
+                  In dọc
+                </label>
+                <label class="custom-radio">
+                  <input type="radio" name="printmode">
+                  <span class="radio-btn"></span>
+                  In ngang
+                </label>
+              </div>
+            </div>
+            
+            <div class="toggle-group">
+              <span class="label-left">Tùy chọn</span>
+              <label class="switch">
+                <input type="checkbox" id="duplexToggle">
+                <span class="slider"></span>
+              </label>
+              <span class="text-f">In hai mặt</span>
+            </div> -->
+            <div class="flex-row-cbbf">
+              <button type="button" class="rectangle-1" class="cancel" id="close-popup-btn" ><span class="cancel" id="close-popup-btn">Hủy</span></button>
+              <button type="submit" class="rectangle-2"><span class="confirm">Xác nhận</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="printConfig.js"></script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+body{
+  margin: 0;
+}
+
+main{
+  width: 100%;
+  text-align: center;
+}
+.main-container {
+  overflow: hidden;
+
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 15px;
+  position: relative;
+  width: 100%;
+  margin: 872px 0 0 0;
+  padding: 25px 42px 25px 42px;
+  background: #6d6d6d;
+  overflow: hidden;
+}
+.technical-team {
+  align-self: stretch;
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  min-width: 0;
+  height: 24px;
+  color: #ffffff;
+  font-family: Outfit, var(--default-font-family);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 23.94px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 1;
+}
+.contact-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  width: 1356px;
+  min-width: 0;
+  height: 69px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 22.994px;
+  text-align: left;
+  z-index: 2;
+}
+.support-message {
+  align-self: stretch;
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  min-width: 0;
+  height: 23px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 22.994px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 3;
+}
+.rectangle {
+  position: relative;
+  width: 444px;
+  height: 872px;
+  top: 0;
+  left: 1080px;
+  background: #005db4;
+  z-index: 4;
+}
+.login {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 40px;
+  top: 222px;
+  left: 371px;
+  color: #191919;
+  font-family: Inter, var(--default-font-family);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 16;
+}
+.printer {
+  position: absolute;
+  width: 669px;
+  height: 370px;
+  top: 262px;
+  left: 713px;
+  background: url(./assets/images/7b7fb3ef-ace4-4257-b3c1-7747b32d3c55.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 5;
+}
+.username {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 17px;
+  top: 285px;
+  left: 282px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 14;
+}
+.rectangle-1 {
+  position: absolute;
+  width: 367px;
+  height: 32px;
+  top: 312px;
+  left: 282px;
+  background: rgba(175, 179, 255, 0);
+  border: 1px solid #656ed3;
+  z-index: 13;
+  border-radius: 50px;
+  padding: 15px;
+}
+.password-input {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 17px;
+  top: 355px;
+  left: 284px;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 11;
+}
+.rectangle-box {
+  position: absolute;
+  width: 367px;
+  height: 32px;
+  top: 382px;
+  left: 282px;
+  background: rgba(175, 179, 255, 0);
+  border: 1px solid #656ed3;
+  z-index: 10;
+  border-radius: 50px;
+  padding: 15px;
+}
+.rectangle-box-2 {
+  position: absolute;
+  width: 365px;
+  height: 31.412px;
+  top: 452.699px;
+  left: 284px;
+  background: #005db4;
+  z-index: 7;
+  border-radius: 50px;
+}
+.login-button {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 18px;
+  top: 6.301px;
+  left: 137px;
+  color: #ffffff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 8;
+}
+.forgot-password-button {
+  position: absolute;
+  width: 132px;
+  height: 17px;
+  top: 525px;
+  left: 406px;
+  cursor: pointer;
+  color: #000000;
+  font-family: Inter, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  z-index: 15;
+}
