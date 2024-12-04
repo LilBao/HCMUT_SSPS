@@ -43,7 +43,7 @@
         VALUES (1,'ROLE_STUDENT'), (2, 'ROLE_SPSO');
 
         INSERT INTO tbl_user_role (role_id, user_id)
-        VALUES (1, '2433037') , (1, '2433037')
+        VALUES (1, '2433037') , (2, '2433037')
      ```
 
 4. **Kiểm tra API với Postman**
