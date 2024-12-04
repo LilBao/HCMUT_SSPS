@@ -36,7 +36,8 @@
 
 3. **Chèn dữ liệu mẫu** vào MySQL
    - Sử dụng câu lệnh SQL để chèn dữ liệu mẫu vào cơ sở dữ liệu ():
-     ```INSERT INTO tbl_spss_user (account_balance, is_enabled, created_at, expire_code_at, modified_at, created_by, email, modified_by, name, page_balance, password, token, user_id)
+     ```
+        INSERT INTO tbl_spss_user (account_balance, is_enabled, created_at, expire_code_at, modified_at, created_by, email, modified_by, name, page_balance, password, token, user_id)
         VALUES (NULL, '1', NULL, NULL, NULL, NULL, 'a@hcmut.edu.vn', NULL, NULL, NULL, '$2a$12$1a3gjfPY/hJPOOCesAT3pu151TyftwQlEwdA9Efa0nKdwcNlfBn3y', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYW9AaGNtdXQuZWR1LnZuIiwicm9sZSI6W3siYXV0aG9yaXR5IjoiU1RVREVOVCJ9LHsiYXV0aG9yaXR5IjoiU1BTTyJ9XSwiaWQiOiIyNDMzMDM3IiwiaXNFbmFibGVkIjp0cnVlLCJpYXQiOjE3MzIwNzg3MDEsImV4cCI6MTczMjE2NTEwMX0.E62zksgy2fLsoG1dhmdeO-Jdy93Z4xXGVtLG0Wg9H-R6krxYGXzVCwFlcKQDZiauSoPkRLubgOCqHgqKdFMWog', '2433037');
 
         INSERT INTO tbl__role (id,name)
