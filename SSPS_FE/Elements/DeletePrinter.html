@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Message</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Layout chung cho cả hai button */
+        .button {
+            width: 150px;
+            height: 50px;
+            flex-shrink: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;  /* Căn giữa theo chiều dọc */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+        }
+
+        /* Style cho button đầu tiên (Layout 1) */
+        .button-style-1 {
+            border-radius: 10px;
+            border: 3px solid #D9D9D9;
+            background: #FFF;
+            color: #000; /* Màu chữ đen */
+        }
+
+        .button-style-1:hover {
+            background: #D9D9D9; /* Khi hover sẽ có nền xám nhạt */
+        }
+
+        /* Style cho button thứ hai (Layout 2) */
+        .button-style-2 {
+            border-radius: 10px;
+            background: #005DB4;
+            color: white; /* Màu chữ trắng */
+        }
+
+        .button-style-2:hover {
+            background: #004080; /* Khi hover sẽ có nền màu xanh đậm hơn */
+        }
+
+        /* Centering toàn bộ page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f1f1f1; /* Thêm nền màu sáng để dễ nhận diện */
+        }
+
+        /* Popup Container */
+        .popup-container {
+            width: 600px;
+            height: 204px;
+            background-color: #FFF;
+            border-radius: 10px;
+            border: 1px solid #6D6D6D;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Typography */
+        .popup-text {
+            color: #6D6D6D;
+            font-family: "Open Sans", sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 30px; /* Khoảng cách giữa text và các button */
+        }
+
+        /* Button trong popup */
+        .popup-buttons {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%; /* Làm cho các button chiếm hết chiều rộng */
+            gap: 20px; /* Khoảng cách giữa các button */
+        }
+
+        .popup-buttons .button {
+            width: 150px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup Container -->
+    <div class="popup-container">
+        <div class="popup-text">Xác nhận xoá Máy in đã chọn?</div>
+        <div class="popup-buttons">
+            <button class="button button-style-1">Hủy</button>
+            <button class="button button-style-2">Xác nhận</button>
+        </div>
+    </div>
+</body>
+</html>
