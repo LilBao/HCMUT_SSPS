@@ -245,3 +245,159 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const printerLinks = document.querySelectorAll(".file-table a");
+    const body = document.body;
+
+    // Tạo popup HTML
+    const popupHTML = `
+        <div class="popup-container">
+            <div class="popup-content">
+                <h2>Thông tin máy in</h2>
+                <p><strong>ID:</strong> <span id="printer-id"></span> <button class="edit-button">✏️</button></p>
+                <p><strong>Mẫu máy:</strong> <span id="printer-model"></span></p>
+                <p><strong>Địa chỉ IP:</strong> <span id="printer-ip"></span></p>
+                <p><strong>Vị trí:</strong> <span id="printer-location"></span></p>
+                <hr />
+                <p><strong>Trạng thái:</strong>
+                    <select id="printer-status">
+                        <option value="Đang hoạt động">Đang hoạt động</option>
+                        <option value="Không hoạt động">Không hoạt động</option>
+                    </select>
+                </p>
+                <div class="popup-buttons">
+                    <button class="button button-style-1">Hủy</button>
+                    <button class="button button-style-2">Lưu</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Thêm popup vào body
+    body.insertAdjacentHTML("beforeend", popupHTML);
+
+    const popupContainer = document.querySelector(".popup-container");
+    const popupContent = document.querySelector(".popup-content");
+    const cancelButton = document.querySelector(".button-style-1");
+    const saveButton = document.querySelector(".button-style-2");
+
+    // Dữ liệu máy in
+    const printerData = {
+        PRT001: {
+            id: "Máy in 1",
+            model: "Toshiba 5505AC",
+            ip: "123.456.7890",
+            location: "H1 - phòng tự học tầng 1",
+            status: "Đang hoạt động",
+        },
+        PRT002: {
+            id: "Máy in 2",
+            model: "Canon iR-ADV C3520",
+            ip: "192.168.1.2",
+            location: "H2 - phòng thí nghiệm",
+            status: "Không hoạt động",
+        },
+    };
+
+    // Hiển thị popup
+    printerLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const printerId = link.textContent;
+            const data = printerData[printerId];
+
+            if (data) {
+                document.getElementById("printer-id").textContent = data.id;
+                document.getElementById("printer-model").textContent = data.model;
+                document.getElementById("printer-ip").textContent = data.ip;
+                document.getElementById("printer-location").textContent = data.location;
+                document.getElementById("printer-status").value = data.status;
+
+                popupContainer.style.display = "flex";
+            }
+        });
+    });
+
+    // Đóng popup
+    cancelButton.addEventListener("click", () => {
+        popupContainer.style.display = "none";
+    });
+
+    // Lưu dữ liệu
+    saveButton.addEventListener("click", () => {
+        const updatedStatus = document.getElementById("printer-status").value;
+        alert(`Trạng thái đã lưu: ${updatedStatus}`);
+        popupContainer.style.display = "none";
+    });
+
+    // CSS trong script
+    const style = document.createElement("style");
+    style.textContent = `
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #FFF;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .popup-content h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .popup-content p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .button-style-1 {
+            background-color: #D9D9D9;
+            color: black;
+        }
+
+        .button-style-1:hover {
+            background-color: #B0B0B0;
+        }
+
+        .button-style-2 {
+            background-color: #005DB4;
+            color: white;
+        }
+
+        .button-style-2:hover {
+            background-color: #004080;
+        }
+    `;
+    document.head.appendChild(style);
+});
