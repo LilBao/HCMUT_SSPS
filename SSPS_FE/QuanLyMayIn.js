@@ -244,73 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const printerData = {
-//         PRT001: {
-//             id: "Máy in 1",
-//             model: "Toshiba 5505AC",
-//             ip: "123.456.789.001",
-//             location: "H1 - phòng tự học tầng 1",
-//             status: "Đang hoạt động",
-//         },
-//         PRT002: {
-//             id: "Máy in 2",
-//             model: "Canon iR-ADV C3520",
-//             ip: "192.168.1.002",
-//             location: "H2 - phòng thí nghiệm",
-//             status: "Không hoạt động",
-//         },
-//     };
-
-//     // Gắn sự kiện cho liên kết ID Máy in
-//     const printerLinks = document.querySelectorAll(".printer-link");
-//     printerLinks.forEach((link) => {
-//         link.addEventListener("click", (e) => {
-//             e.preventDefault();
-//             const printerId = link.textContent;
-//             const data = printerData[printerId];
-//             if (data) showPrinterDetails(data);
-//         });
-//     });
-
-//     // Hiển thị thông tin máy in trong popup
-//     function showPrinterDetails(data) {
-//         document.getElementById("details-printer-id").textContent = data.id;
-//         document.getElementById("details-printer-model").textContent = data.model;
-//         document.getElementById("details-printer-ip").textContent = data.ip;
-//         document.getElementById("details-printer-location").textContent = data.location;
-//         document.getElementById("details-printer-status").value = data.status;
-
-//         document.getElementById("printer-details-popup").style.display = "flex";
-//     }
-
-//     // Xử lý nút "Hủy"
-//     document.getElementById("close-details-popup").addEventListener("click", () => {
-//         document.getElementById("printer-details-popup").style.display = "none";
-//     });
-
-//     // Xử lý nút "Lưu"
-//     document.querySelector(".save-button").addEventListener("click", () => {
-//         const id = document.getElementById("details-printer-id").textContent;
-//         const status = document.getElementById("details-printer-status").value;
-
-//         // Cập nhật dữ liệu máy in trong đối tượng printerData
-//         if (printerData[id]) {
-//             printerData[id].status = status;
-
-//             // Gửi thông tin đến backend (nếu cần)
-//             console.log("Thông tin đã lưu:", printerData[id]);
-
-//             // Hiển thị thông báo
-//             alert(`Thông tin máy in ${id} đã được cập nhật thành công!`);
-//         }
-
-//         // Đóng popup
-//         document.getElementById("printer-details-popup").style.display = "none";
-//     });
-// });
-
 document.addEventListener("DOMContentLoaded", async () => {
     let printerData = {};
 
@@ -394,5 +327,3 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("printer-details-popup").style.display = "none";
     });
 });
-
-
