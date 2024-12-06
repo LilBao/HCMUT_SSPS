@@ -245,159 +245,154 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const printerLinks = document.querySelectorAll(".file-table a");
-    const body = document.body;
+// document.addEventListener("DOMContentLoaded", () => {
+//     const printerData = {
+//         PRT001: {
+//             id: "Máy in 1",
+//             model: "Toshiba 5505AC",
+//             ip: "123.456.789.001",
+//             location: "H1 - phòng tự học tầng 1",
+//             status: "Đang hoạt động",
+//         },
+//         PRT002: {
+//             id: "Máy in 2",
+//             model: "Canon iR-ADV C3520",
+//             ip: "192.168.1.002",
+//             location: "H2 - phòng thí nghiệm",
+//             status: "Không hoạt động",
+//         },
+//     };
 
-    // Tạo popup HTML
-    const popupHTML = `
-        <div class="popup-container">
-            <div class="popup-content">
-                <h2>Thông tin máy in</h2>
-                <p><strong>ID:</strong> <span id="printer-id"></span> <button class="edit-button">✏️</button></p>
-                <p><strong>Mẫu máy:</strong> <span id="printer-model"></span></p>
-                <p><strong>Địa chỉ IP:</strong> <span id="printer-ip"></span></p>
-                <p><strong>Vị trí:</strong> <span id="printer-location"></span></p>
-                <hr />
-                <p><strong>Trạng thái:</strong>
-                    <select id="printer-status">
-                        <option value="Đang hoạt động">Đang hoạt động</option>
-                        <option value="Không hoạt động">Không hoạt động</option>
-                    </select>
-                </p>
-                <div class="popup-buttons">
-                    <button class="button button-style-1">Hủy</button>
-                    <button class="button button-style-2">Lưu</button>
-                </div>
-            </div>
-        </div>
-    `;
+//     // Gắn sự kiện cho liên kết ID Máy in
+//     const printerLinks = document.querySelectorAll(".printer-link");
+//     printerLinks.forEach((link) => {
+//         link.addEventListener("click", (e) => {
+//             e.preventDefault();
+//             const printerId = link.textContent;
+//             const data = printerData[printerId];
+//             if (data) showPrinterDetails(data);
+//         });
+//     });
 
-    // Thêm popup vào body
-    body.insertAdjacentHTML("beforeend", popupHTML);
+//     // Hiển thị thông tin máy in trong popup
+//     function showPrinterDetails(data) {
+//         document.getElementById("details-printer-id").textContent = data.id;
+//         document.getElementById("details-printer-model").textContent = data.model;
+//         document.getElementById("details-printer-ip").textContent = data.ip;
+//         document.getElementById("details-printer-location").textContent = data.location;
+//         document.getElementById("details-printer-status").value = data.status;
 
-    const popupContainer = document.querySelector(".popup-container");
-    const popupContent = document.querySelector(".popup-content");
-    const cancelButton = document.querySelector(".button-style-1");
-    const saveButton = document.querySelector(".button-style-2");
+//         document.getElementById("printer-details-popup").style.display = "flex";
+//     }
 
-    // Dữ liệu máy in
-    const printerData = {
-        PRT001: {
-            id: "Máy in 1",
-            model: "Toshiba 5505AC",
-            ip: "123.456.7890",
-            location: "H1 - phòng tự học tầng 1",
-            status: "Đang hoạt động",
-        },
-        PRT002: {
-            id: "Máy in 2",
-            model: "Canon iR-ADV C3520",
-            ip: "192.168.1.2",
-            location: "H2 - phòng thí nghiệm",
-            status: "Không hoạt động",
-        },
-    };
+//     // Xử lý nút "Hủy"
+//     document.getElementById("close-details-popup").addEventListener("click", () => {
+//         document.getElementById("printer-details-popup").style.display = "none";
+//     });
 
-    // Hiển thị popup
+//     // Xử lý nút "Lưu"
+//     document.querySelector(".save-button").addEventListener("click", () => {
+//         const id = document.getElementById("details-printer-id").textContent;
+//         const status = document.getElementById("details-printer-status").value;
+
+//         // Cập nhật dữ liệu máy in trong đối tượng printerData
+//         if (printerData[id]) {
+//             printerData[id].status = status;
+
+//             // Gửi thông tin đến backend (nếu cần)
+//             console.log("Thông tin đã lưu:", printerData[id]);
+
+//             // Hiển thị thông báo
+//             alert(`Thông tin máy in ${id} đã được cập nhật thành công!`);
+//         }
+
+//         // Đóng popup
+//         document.getElementById("printer-details-popup").style.display = "none";
+//     });
+// });
+
+document.addEventListener("DOMContentLoaded", async () => {
+    let printerData = {};
+
+    // Lấy dữ liệu máy in từ API backend
+    async function fetchPrinterData() {
+        try {
+            const response = await fetch("https://api.example.com/printers"); // Thay URL bằng API thực tế
+            const data = await response.json();
+            printerData = data.reduce((acc, printer) => {
+                acc[printer.id] = printer;
+                return acc;
+            }, {});
+        } catch (error) {
+            console.error("Lỗi khi lấy dữ liệu máy in:", error);
+        }
+    }
+
+    // Gọi API khi DOM đã sẵn sàng
+    await fetchPrinterData();
+
+    // Gắn sự kiện cho liên kết ID Máy in
+    const printerLinks = document.querySelectorAll(".printer-link");
     printerLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const printerId = link.textContent;
             const data = printerData[printerId];
-
-            if (data) {
-                document.getElementById("printer-id").textContent = data.id;
-                document.getElementById("printer-model").textContent = data.model;
-                document.getElementById("printer-ip").textContent = data.ip;
-                document.getElementById("printer-location").textContent = data.location;
-                document.getElementById("printer-status").value = data.status;
-
-                popupContainer.style.display = "flex";
-            }
+            if (data) showPrinterDetails(data);
         });
     });
 
-    // Đóng popup
-    cancelButton.addEventListener("click", () => {
-        popupContainer.style.display = "none";
+    // Hiển thị thông tin máy in trong popup
+    function showPrinterDetails(data) {
+        document.getElementById("details-printer-id").textContent = data.id;
+        document.getElementById("details-printer-model").textContent = data.model;
+        document.getElementById("details-printer-ip").textContent = data.ip;
+        document.getElementById("details-printer-location").textContent = data.location;
+        document.getElementById("details-printer-status").value = data.status;
+
+        document.getElementById("printer-details-popup").style.display = "flex";
+    }
+
+    // Xử lý nút "Hủy"
+    document.getElementById("close-details-popup").addEventListener("click", () => {
+        document.getElementById("printer-details-popup").style.display = "none";
     });
 
-    // Lưu dữ liệu
-    saveButton.addEventListener("click", () => {
-        const updatedStatus = document.getElementById("printer-status").value;
-        alert(`Trạng thái đã lưu: ${updatedStatus}`);
-        popupContainer.style.display = "none";
+    // Xử lý nút "Lưu"
+    document.querySelector(".save-button").addEventListener("click", async () => {
+        const id = document.getElementById("details-printer-id").textContent;
+        const status = document.getElementById("details-printer-status").value;
+
+        // Cập nhật dữ liệu máy in trong đối tượng printerData
+        if (printerData[id]) {
+            printerData[id].status = status;
+
+            // Gửi thông tin đến backend
+            try {
+                const response = await fetch(`https://api.example.com/printers/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ status }),
+                });
+
+                if (response.ok) {
+                    console.log("Thông tin đã lưu:", printerData[id]);
+                    alert(`Thông tin máy in ${id} đã được cập nhật thành công!`);
+                } else {
+                    console.error("Lỗi khi cập nhật thông tin máy in:", response.statusText);
+                    alert("Có lỗi xảy ra khi cập nhật thông tin máy in.");
+                }
+            } catch (error) {
+                console.error("Lỗi khi gửi dữ liệu đến backend:", error);
+                alert("Không thể kết nối đến server.");
+            }
+        }
+
+        // Đóng popup
+        document.getElementById("printer-details-popup").style.display = "none";
     });
-
-    // CSS trong script
-    const style = document.createElement("style");
-    style.textContent = `
-        .popup-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-content {
-            background-color: #FFF;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: left;
-            width: 500px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .popup-content h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .popup-content p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-
-        .popup-buttons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .button {
-            padding: 10px 20px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-        }
-
-        .button-style-1 {
-            background-color: #D9D9D9;
-            color: black;
-        }
-
-        .button-style-1:hover {
-            background-color: #B0B0B0;
-        }
-
-        .button-style-2 {
-            background-color: #005DB4;
-            color: white;
-        }
-
-        .button-style-2:hover {
-            background-color: #004080;
-        }
-    `;
-    document.head.appendChild(style);
 });
+
+
