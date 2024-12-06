@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Printing Pages</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" />
+    <link rel="stylesheet" href="buyPagesStyle.css" />
+  </head>
+  <body>
+    <button id="buy-pages-btn" class="buy-pages-btn">Buy Pages</button>
+    <div class="popup">
+      <div class="popup-content">
+        <div class="main-container">
+          <form action="">
+            <span class="text">Mua thêm trang in</span>
+            <div class="wrapper">
+              <span class="text-2"><label for="size">Kích thước</label></span>
+              <select class="rectangle-size" name="kich-thuoc" id="size">
+                <option value="A4" selected>A4</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="A3">A3</option>
+              </select>
+            </div>
+            <div class="wrapper-2">
+              <span class="text-4">Số lượng mua</span>
+              <div class="custom-input">
+                <button type="button" id="decrement">-</button>
+                <input type="number" id="value" name="quantity" value="1" min="1" />
+                <button type="button" id="increment">+</button>
+              </div>
+            </div>
+            <div class="section-3">
+              <input type="hidden" name="total_amount" id="total-amount" value="500">
+              <div class="wrapper-3"><span class="text-6" id="total">500 VND</span></div>
+              <span class="text-7">Thành tiền</span>
+            </div>
+            <div class="group-2">
+              <button type="button" class="section-4 cancel-btn"><span class="text-8">Hủy</span></button>
+              <button type="submit" class="group-3"><span class="text-9">Xác nhận</span></button>
+            </div>
+            <div class="pic-4"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const valueElement = document.getElementById("value");
+        const totalElement = document.getElementById("total");
+        const totalAmountElement = document.getElementById("total-amount");
+        const incrementButton = document.getElementById("increment");
+        const decrementButton = document.getElementById("decrement");
+        const form = document.getElementById("purchase-form");
+
+        const unitPrice = 500;
+
+        function updateTotal() {
+          const quantity = parseInt(valueElement.value, 10) || 1;
+          const total = quantity * unitPrice;
+          totalElement.textContent = total + " VND";
+          totalAmountElement.value = total; // Cập nhật giá trị tổng vào input ẩn
+        }
+
+        incrementButton.addEventListener("click", function () {
+          let quantity = parseInt(valueElement.value, 10) || 1;
+          quantity++;
+          valueElement.value = quantity;
+          updateTotal();
+        });
+
+        decrementButton.addEventListener("click", function () {
+          let quantity = parseInt(valueElement.value, 10) || 1;
+          if (quantity > 1) {
+            quantity--;
+            valueElement.value = quantity;
+            updateTotal();
+          }
+        });
+
+        valueElement.addEventListener("input", updateTotal);
+
+        updateTotal();
+
+        form.addEventListener("submit", function (event) {
+          updateTotal();
+        });
+      });
+
+    </script>
+    <script src="buyPages.js"></script>
+  </body>
+</html>
