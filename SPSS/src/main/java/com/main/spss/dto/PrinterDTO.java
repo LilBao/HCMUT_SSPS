@@ -1,5 +1,7 @@
 package com.main.spss.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.main.spss.embedded.Location;
 import com.main.spss.entity.Printer;
 import jakarta.persistence.Embedded;

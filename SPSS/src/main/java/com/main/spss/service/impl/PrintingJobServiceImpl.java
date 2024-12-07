@@ -22,17 +22,15 @@ import org.cups4j.CupsPrinter;
 import org.cups4j.PrintRequestResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -59,8 +57,11 @@ public class PrintingJobServiceImpl implements PrintingJobService{
     private final ConcurrentHashMap<Long, Boolean> printerStatus = new ConcurrentHashMap<>();
 
     @Override
-    public ApiResponse addRequest(UserPrincipal userPrincipal, PrintRequest request) {
+    public ApiResponse addRequest(UserPrincipal userPrincipal, PrintRequest request, MultipartFile[] files) {
         ApiResponse apiResponse = new ApiResponse();
+        List<File> processedFiles =  fileService.convertMultipart(files);
+        request.setFiles(processedFiles);
+
         String errorRequest = validateRequest(userPrincipal, request);
         if (errorRequest.length() != 0) {
             return apiResponse.builder()
