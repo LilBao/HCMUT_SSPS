@@ -1,0 +1,154 @@
+.three-button {
+  width: 70px; /* Kích thước mới */
+  height: 70px; /* Kích thước mới */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 10px; /* Bo tròn để giống hình 2 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+  background-color: #ffffff; /* Nền trắng để tương thích */
+}
+
+/* Hover effect (shared for both buttons) */
+.three-button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0; /* Hiệu ứng khi hover */
+}
+
+/* SVG styling (giữ nguyên nhưng sẽ tự co theo nút) */
+.three-button svg {
+  display: block;
+  width: 50px; /* Kích thước SVG bên trong */
+  height: 50px;
+}
+
+/* Tiêu đề File đã tải lên */
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  flex-shrink: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+}
+
+/* Style cho button đầu tiên (Layout 1) */
+.button-style-1 {
+  border-radius: 10px;
+  border: 3px solid #d9d9d9;
+  background: #fff;
+  color: #000; /* Màu chữ đen */
+}
+
+.button-style-1:hover {
+  background: #d9d9d9; /* Khi hover sẽ có nền xám nhạt */
+}
+
+/* Style cho button thứ hai (Layout 2) */
+.button-style-2 {
+  border-radius: 10px;
+  background: #005db4;
+  color: white; /* Màu chữ trắng */
+}
+
+.button-style-2:hover {
+  background: #004080; /* Khi hover sẽ có nền màu xanh đậm hơn */
+}
+
+/* Centering toàn bộ page */
+
+/* Popup Container */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Centered Popup Container */
+.popup-container {
+  position: fixed; /* Fix the popup at the center of the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for center alignment */
+  width: 500px; /* Adjust width as needed */
+  padding: 30px 40px; /* Spacing inside the popup */
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #6d6d6d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1010; /* Ensure it appears above the overlay */
+  max-width: 90%; /* Responsive width */
+}
+
+/* Typography for popup text */
+.popup-text {
+  color: #6d6d6d;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Button container in popup */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons in popup */
+.popup-buttons .button {
+  width: 45%;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.popup-buttons .button-style-1 {
+  background-color: #fff;
+  border: 2px solid #d9d9d9;
+  color: #000;
+}
+
+.popup-buttons .button-style-1:hover {
+  background-color: #f0f0f0;
+}
+
+.popup-buttons .button-style-2 {
+  background-color: #005db4;
+  color: white;
+}
+
+.popup-buttons .button-style-2:hover {
+  background-color: #004080;
+}

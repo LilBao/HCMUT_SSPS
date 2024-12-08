@@ -1,0 +1,351 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  width: 80%;
+  margin: 20px auto;
+  min-height: 700px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Tách nút ra hai bên */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 2px solid #e80505;
+  background: #fff;
+
+  color: #c90000;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ffe5e5;
+}
+
+.delete-button .icon {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.add-button {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  background: #005db4;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #004a92;
+}
+
+.add-button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Container của bảng */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Bảng */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.file-table thead {
+  background-color: #f2f2f2;
+  font-size: 14px;
+}
+
+.file-table th {
+  padding: 12px 16px;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.file-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Căn giữa checkbox */
+.file-table td:first-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Link trong cột Tên file */
+.file-table a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.file-table a:hover {
+  text-decoration: underline;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+}
+
+.toggle-switch:checked {
+  background-color: #4caf50;
+}
+
+.toggle-switch:checked::before {
+  left: 20px;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.footer {
+  background-color: #6d6d6d;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer .title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.footer .contact-info {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer .note {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.header .text-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text-main {
+  color: #000; /* Màu đen */
+  font-size: 30px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.text-highlight {
+  color: #ff1717; /* Màu đỏ */
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Icon container */
+.icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Button shared styling (Cập nhật kích thước) */
+.three-button {
+  width: 70px; /* Kích thước mới */
+  height: 70px; /* Kích thước mới */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 10px; /* Bo tròn để giống hình 2 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+  background-color: #ffffff; /* Nền trắng để tương thích */
+}
+
+/* Hover effect (shared for both buttons) */
+.three-button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0; /* Hiệu ứng khi hover */
+}
+
+/* SVG styling (giữ nguyên nhưng sẽ tự co theo nút) */
+.three-button svg {
+  display: block;
+  width: 50px; /* Kích thước SVG bên trong */
+  height: 50px;
+}
+
+/* Tiêu đề File đã tải lên */
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* Popup Container */
+/* Overlay to darken the background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Centered Popup Container */
+.popup-container {
+  position: fixed; /* Fix the popup at the center of the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for center alignment */
+  width: 500px; /* Adjust width as needed */
+  padding: 30px 40px; /* Spacing inside the popup */
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #6d6d6d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1010; /* Ensure it appears above the overlay */
+  max-width: 90%; /* Responsive width */
+}
+
+/* Typography for popup text */
+.popup-text {
+  color: #6d6d6d;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Button container in popup */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons in popup */
+.popup-buttons .button {
+  width: 45%;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.popup-buttons .button-style-1 {
+  background-color: #fff;
+  border: 2px solid #d9d9d9;
+  color: #000;
+}
+
+.popup-buttons .button-style-1:hover {
+  background-color: #f0f0f0;
+}
+
+.popup-buttons .button-style-2 {
+  background-color: #005db4;
+  color: white;
+}
+
+.popup-buttons .button-style-2:hover {
+  background-color: #004080;
+}
+.available-pages {
+  position: absolute;
+  left: 800px;
+  ul {
+    list-style: none;
+  }
+}

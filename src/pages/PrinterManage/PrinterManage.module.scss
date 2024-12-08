@@ -1,0 +1,231 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #005db4;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .menu {
+  display: flex;
+  gap: 30px; /* Thêm khoảng cách giữa các menu */
+}
+
+.navbar .menu-item {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar .menu-item:hover {
+  text-decoration: underline;
+}
+
+.navbar .options {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .options img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  border-radius: 3px;
+  background: white;
+}
+
+.hamburger:hover div {
+  background: #dcdcdc;
+}
+
+.container {
+  flex: 1;
+  width: 80%;
+  margin: 20px auto;
+  min-height: 700px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Tách nút ra hai bên */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  border: 2px solid #e80505;
+  background: #fff;
+
+  color: #c90000;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ffe5e5;
+}
+
+.delete-button .icon {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.add-button {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 8px;
+  background: #005db4;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #004a92;
+}
+
+.add-button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+td {
+  max-width: 150px; /* Đặt độ rộng tối đa cho ô */
+  white-space: nowrap; /* Không cho xuống dòng */
+  overflow: hidden; /* Ẩn nội dung tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." khi nội dung quá dài */
+}
+.file-table td {
+  max-width: 150px; /* Giới hạn độ rộng */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.file-table th:first-child,
+.file-table td:first-child {
+  text-align: center;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.toggle-switch:checked {
+  background-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s ease;
+}
+
+.toggle-switch:checked::before {
+  left: 20px;
+}
+.status-cell {
+  max-width: 150px; /* Cố định độ rộng */
+  min-width: 150px; /* Giữ kích thước cố định */
+  white-space: nowrap; /* Không xuống dòng */
+  overflow: hidden; /* Ẩn phần nội dung tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." nếu nội dung quá dài */
+}
+
+.status-cell span {
+  display: inline-block; /* Hiển thị nội dung theo dòng */
+  max-width: 100%; /* Giữ nội dung không tràn khỏi ô */
+}

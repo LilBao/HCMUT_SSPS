@@ -1,0 +1,154 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+body {
+  margin: 0;
+}
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  position: relative;
+  width: 1440px;
+  height: 1068px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+.rectangle {
+  position: absolute;
+  width: 607px;
+  height: 700px;
+  top: 136px;
+  left: 417px;
+  background: #ffffff;
+  z-index: 10;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.logo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 29px 0 0 203px;
+  background: url(../../../assets/img/LoginPage1/ce90f0e083eb2e3e7ce46e75119f0f255a3d1fa8.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 11;
+}
+.line {
+  position: relative;
+  width: 500px;
+  height: 1px;
+  margin: 56px 0 0 53px;
+  background: url(../../../assets/img/LoginPage1/037ac404-77b2-458e-8743-76b1e220169a.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 12;
+}
+.login-object {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  width: 355px;
+  height: 36px;
+  margin: 28px 0 0 48px;
+  color: #032b91;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 13;
+}
+.rectangle-1 {
+  position: relative;
+  width: 500px;
+  height: 70px;
+  margin: 48px 0 0 53px;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid rgba(109, 109, 109, 0.14);
+  z-index: 14;
+  border-radius: 5px;
+}
+.student {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 138px;
+  height: 38px;
+  top: 15px;
+  left: 180px;
+  color: #000000;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 16;
+}
+.rectangle-2 {
+  position: relative;
+  width: 500px;
+  height: 70px;
+  margin: 28px 0 0 53px;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid rgba(109, 109, 109, 0.14);
+  z-index: 15;
+  border-radius: 5px;
+}
+.admin {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 138px;
+  height: 38px;
+  top: 15px;
+  left: 180px;
+  color: #000000;
+  font-family: Roboto, var(--default-font-family);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 17;
+}
+.rectangle-1:hover,
+.rectangle-2:hover {
+  cursor: pointer;
+}
+.printer {
+  position: absolute;
+  width: 1252px;
+  height: 622px;
+  top: 175px;
+  left: 94px;
+  background: url(../../../assets/img/LoginPage1/a2252b00-74fd-4c41-afbe-2c00de218602.png)
+    no-repeat center;
+  background-size: cover;
+  z-index: 9;
+}

@@ -1,0 +1,273 @@
+@font-face {
+  font-family: "Madani Arabic";
+  src: url("https://yourdomain.com/fonts/MadaniArabic.ttf") format("truetype"),
+    url("https://yourdomain.com/fonts/MadaniArabic.woff") format("woff");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* Main content section */
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.content h2 {
+  margin: 0;
+  font-size: 65px;
+  color: #333;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.content h2 img {
+  width: 270px;
+  height: 210px;
+  padding-top: 15px;
+  filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, 0.25));
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #005db4;
+  padding-bottom: 220px;
+  padding-top: 150px;
+}
+
+.header .login-box {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(210, 220, 255, 0.8) 54%,
+    rgba(125, 186, 244, 1) 100%
+  );
+  padding: 20px;
+  border-radius: 30px;
+  display: inline-block;
+  text-align: left;
+  margin-left: 100px;
+  gap: 10px;
+}
+
+.header .login-box h1 {
+  font-family: "Futura";
+  font-weight: bold;
+  font-size: 90px;
+  line-height: 100px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-left: 50px;
+  margin-bottom: 0;
+}
+
+.header .login-box p {
+  font-family: "Outfit";
+  font-weight: 650;
+  font-size: 50px;
+  line-height: 35px;
+  text-transform: uppercase;
+  color: #000000;
+  width: 900px;
+  height: 30px;
+  margin-top: 0;
+  margin-left: 50px;
+}
+
+.header .login-box .login-button {
+  background-color: #005db4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  margin-left: 50px;
+  font-family: "Outfit";
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.header .login-box .login-button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(210, 220, 255, 0.8) 54%,
+    rgba(125, 186, 244, 1) 100%
+  );
+  border: 5px solid #005db4;
+  color: #005db4;
+}
+
+.header .login-box .login-button span {
+  margin-left: 10px;
+  font-size: 30px;
+  width: 15px;
+}
+
+.header .image-container {
+  display: flex;
+  margin-left: auto;
+}
+
+.header .image-container img {
+  width: 1170px;
+  height: 700px;
+  float: right;
+}
+
+/* Service Section */
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  padding-top: 90px;
+}
+
+.service {
+  background-color: white;
+  padding: 30px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 470px;
+  text-align: center;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.25));
+}
+
+.service img {
+  padding-top: 50px;
+  padding-bottom: 22px;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 10px;
+}
+
+.service h3 {
+  margin: 10px 0;
+  font-size: 40px;
+  color: #333;
+  font-family: "Futura";
+}
+
+.service p {
+  padding-top: 22px;
+  margin: 0;
+  font-size: 40px;
+  color: #777;
+  font-family: "Oswald";
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .header .login-box h1 {
+    font-size: 70px;
+  }
+
+  .header .login-box p {
+    font-size: 40px;
+  }
+
+  .header .image-container img {
+    width: 900px;
+    height: 500px;
+  }
+
+  .service {
+    width: 400px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  .header .login-box {
+    margin-left: 0;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .header .login-box h1 {
+    font-size: 50px;
+  }
+
+  .header .login-box p {
+    font-size: 30px;
+    width: 80%;
+  }
+
+  .header .image-container img {
+    width: 80%;
+    height: auto;
+  }
+
+  .service {
+    width: 90%;
+    height: auto;
+  }
+
+  .content h2 {
+    font-size: 40px;
+  }
+
+  .content h2 img {
+    width: 200px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .login-box h1 {
+    font-size: 40px;
+  }
+
+  .header .login-box p {
+    font-size: 25px;
+    width: 90%;
+  }
+
+  .header .login-box .login-button {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  .header .image-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .service {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .service h3 {
+    font-size: 30px;
+  }
+
+  .service p {
+    font-size: 25px;
+  }
+}

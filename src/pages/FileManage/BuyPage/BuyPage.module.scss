@@ -1,0 +1,27 @@
+.three-button {
+  width: 70px; /* Kích thước mới */
+  height: 70px; /* Kích thước mới */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 10px; /* Bo tròn để giống hình 2 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+  background-color: #ffffff; /* Nền trắng để tương thích */
+}
+
+/* Hover effect (shared for both buttons) */
+.three-button:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0; /* Hiệu ứng khi hover */
+}
+
+/* SVG styling (giữ nguyên nhưng sẽ tự co theo nút) */
+.three-button svg {
+  display: block;
+  width: 50px; /* Kích thước SVG bên trong */
+  height: 50px;
+}

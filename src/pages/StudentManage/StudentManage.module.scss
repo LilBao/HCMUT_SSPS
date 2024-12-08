@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  width: 80%;
+  margin: 20px auto;
+  min-height: 600px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Khoảng cách giữa filter-button và input-box */
+}
+
+/* Nút Bộ lọc */
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  color: #005db4;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  background: none;
+  border: none;
+  height: 50px; /* Cố định chiều cao */
+}
+
+.filter-button svg {
+  width: 35px;
+  height: 22px;
+  fill: #005db4;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px; /* Điều chỉnh padding để nhỏ hơn */
+  height: 40px; /* Chiều cao nhỏ hơn */
+  width: 200px; /* Chiều rộng nhỏ hơn */
+  border-radius: 8px; /* Bo góc */
+  border: 2px solid #6d6d6d; /* Độ dày viền nhỏ hơn */
+  flex-shrink: 0;
+  background-color: white; /* Nền trắng */
+}
+
+.input-box input {
+  border: none;
+  outline: none; /* Loại bỏ viền khi chọn */
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px; /* Kích thước chữ nhỏ hơn */
+  color: #6d6d6d;
+  flex: 1; /* Input chiếm toàn bộ chiều rộng còn lại */
+  background-color: transparent; /* Không nền */
+}
+
+.input-box input::placeholder {
+  color: #6d6d6d;
+}
+
+.input-box .icon {
+  flex-shrink: 0;
+}
+
+.input-box .icon svg {
+  width: 18px; /* Thu nhỏ icon hơn */
+  height: 18px; /* Thu nhỏ icon hơn */
+}
+
+.date-filter-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px; /* Padding khớp với input-box */
+  height: 40px; /* Chiều cao bằng với input-box */
+  width: 250px; /* Chiều rộng tùy chỉnh */
+  border-radius: 8px; /* Bo góc khớp với input-box */
+  border: 2px solid #6d6d6d; /* Độ dày viền bằng với input-box */
+  flex-shrink: 0;
+  background-color: white; /* Nền trắng giống input-box */
+}
+
+.date-filter-box .date-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px; /* Kích thước chữ tương tự input-box */
+  color: #6d6d6d;
+  flex: 1; /* Chiếm khoảng trống còn lại */
+  background-color: transparent;
+  border: none; /* Không viền */
+  outline: none; /* Không viền khi chọn */
+}
+
+.date-filter-box input {
+  width: 100%; /* Chiếm toàn bộ chiều rộng */
+  border: none; /* Không viền */
+  outline: none; /* Không viền khi focus */
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: #6d6d6d;
+  background: transparent;
+}
+
+.date-filter-box .calendar-icon,
+.date-filter-box .date-filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* Kích thước nhỏ hơn */
+  height: 24px; /* Kích thước nhỏ hơn */
+  flex-shrink: 0;
+}
+
+.date-filter-box .calendar-icon svg,
+.date-filter-box .date-filter-icon svg {
+  width: 100%; /* Đảm bảo SVG co giãn theo container */
+  height: auto;
+}
+
+.settings-button {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.settings-button svg {
+  width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.file-table th:first-child,
+.file-table td:first-child {
+  text-align: center;
+}

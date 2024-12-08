@@ -1,0 +1,391 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+/* Đảm bảo overlay bao phủ toàn bộ màn hình */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Trên cùng */
+}
+
+.popup-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 600px;
+  max-width: 90%;
+  z-index: 1001; /* Vượt overlay */
+  position: relative;
+}
+
+.main-container {
+  position: relative;
+  width: 600px;
+  height: 482px;
+  margin: 0 auto;
+  font-size: 0px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  animation: zoomIn 0.3s forwards;
+}
+.text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  width: 260px;
+  height: 41px;
+  margin: 30px 0 0 30px;
+  color: #000000;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 40.854px;
+  text-align: center;
+  white-space: nowrap;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 525px;
+  height: 60px;
+  margin: 57px 0 0 30px;
+  z-index: 10;
+}
+.text-2 {
+  flex-shrink: 0;
+  position: relative;
+  height: 29px;
+  color: #000000;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 28.598px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 9;
+}
+//
+//
+
+.text-3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 29px;
+  top: 14px;
+  left: 18px;
+  color: #6d6d6d;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 28.598px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 11;
+}
+.wrapper-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 307px;
+  height: 50px;
+  margin: 21px 0 0 30px;
+  z-index: 21;
+}
+.text-4 {
+  flex-shrink: 0;
+  position: relative;
+  height: 29px;
+  color: #000000;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 28.598px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 2;
+}
+.section-2 {
+  flex-shrink: 0;
+  position: relative;
+  width: 150px;
+  height: 50px;
+  background: #ffffff;
+  border: 3px solid #6d6d6d;
+  z-index: 21;
+}
+
+.text-5 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 25.373px;
+  top: 4px;
+  left: 66px;
+  color: #000000;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 25.373px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 25;
+}
+
+.section-3 {
+  position: relative;
+  width: 458.211px;
+  height: 60px;
+  margin: 31px 0 0 33px;
+  z-index: 5;
+}
+.wrapper-3 {
+  position: absolute;
+  width: 315.211px;
+  height: 60px;
+  top: 0;
+  left: 143px;
+  background: #005db4;
+  border: 1px solid #ffffff;
+  z-index: 5;
+  border-radius: 10px;
+}
+.text-6 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 26px;
+  top: 17px;
+  left: 20.211px;
+  color: #ffffff;
+  font-family: Outfit, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 6;
+}
+.text-7 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 29px;
+  top: 10px;
+  left: 0;
+  color: #005db4;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 28.598px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 3;
+}
+.group-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 440px;
+  height: 50px;
+  margin: 52px 0 0 80px;
+  z-index: 18;
+}
+.button {
+  flex-shrink: 0;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  z-index: 18;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 700;
+  background-color: white;
+}
+.text-8 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 21%;
+  height: 58%;
+  top: 18%;
+  left: 37.83%;
+  color: #000000;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 28.598px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 16;
+}
+.group-3 {
+  flex-shrink: 0;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background: #005db4;
+  z-index: 18;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.text-9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 49%;
+  height: 29px;
+  top: calc(50% - 14px);
+  left: 25.33%;
+  color: #ffffff;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 28.598px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 19;
+}
+//
+// /* Add these styles to your existing CSS */
+
+// .buy-pages-btn:hover {
+//   background-color: #004494;
+// }
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.popup-content.zoom-out {
+  animation: zoomOut 0.3s forwards;
+}
+
+//
+
+.rectangle-size {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  height: 60px;
+  margin: 15px 0 0 10px;
+  background: #ffffff;
+  border: 1px solid #6d6d6d;
+  z-index: 52;
+  border-radius: 10px;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32.684px;
+  color: #6d6d6d;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.rectangle-size option {
+  padding-right: 30px;
+}
+/* Custom input box */
+.custom-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 150px;
+  border-radius: 10px;
+  border: 1px solid #6d6d6d;
+}
+
+.custom-input input[type="number"] {
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: Open Sans, var(--default-font-family);
+  font-size: 21px;
+  color: #6d6d6d;
+  font-weight: 400;
+  line-height: 32.684px;
+
+  /* font-size: 18px; */
+  width: 60px;
+  padding: 5px;
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome/Safari */
+  appearance: none; /* Modern browsers */
+}
+
+.custom-input button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 21px;
+  width: 30px;
+}
+
+/* Hide default input number arrows */
+.custom-input input[type="number"]::-webkit-outer-spin-button,
+.custom-input input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-input button:disabled {
+  background-color: #ccc;
+
+  cursor: not-allowed;
+  padding-bottom: 5px;
+}
